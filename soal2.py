@@ -9,6 +9,47 @@ inputan = input("Masukkan: ")
 # pop() -> mengeluarkan item pada Stack
 # size() -> menghitung jumlah item pada Stack
 # printStack() -> output seluruh isi Stack
-
+class Stack:
+    def __init__(self):
+        self.items = []
+    def isEmpty(self):
+        return self.items == []
+    def push(self, item):
+        self.items.append(item)
+    def pop(self):
+        return self.items.pop()
+    def size(self):
+        return len(self.items)
+    def printStack(self):
+        print(self.items)
 # FUNGSI VALIDASI BRACKETS
 # Tulis algoritma disini...
+s = Stack()
+cek = list(inputan)
+
+for i in range(0,len(cek)) :
+    if (cek[i] == '('):
+        s.push(cek[i])
+    elif (cek[i]== ')'):
+        s.push(cek[i])
+
+seimbang = True
+while s.size() != 0 :
+    coba = s.pop()
+    if coba == ')':
+        if s.size() != 0:
+            coba2 = s.pop()
+            if coba2 == '(':
+                seimbang = True
+        else :
+            seimbang = False
+    elif coba == '(' :
+        seimbang = False
+
+if seimbang == True :
+    print ("Seimbang")
+elif seimbang == False :
+    print ("Tidak seimbang")
+
+
+
