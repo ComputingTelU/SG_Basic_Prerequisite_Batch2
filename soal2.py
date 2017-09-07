@@ -1,14 +1,29 @@
 # VARIABLE
 # Sebagai inputan yang akan divalidasi
-inputan = input("Masukkan: ")
+masukkan = ['(',')']
+s = []
 
-# KELAS STACK
-# Buatlah kelas objek Stack dengan 1 atribut yaitu array, lalu memiliki fungsi sbg berikut:
-# isEmpty() -> return True jika Stack kosong dan False jika terisi.
-# push(item) -> memasukkan item kedalam Stack
-# pop() -> mengeluarkan item pada Stack
-# size() -> menghitung jumlah item pada Stack
-# printStack() -> output seluruh isi Stack
+benar = "True"
 
-# FUNGSI VALIDASI BRACKETS
-# Tulis algoritma disini...
+for i in masukkan :
+	if (i == '(') :
+		s.append(i)
+	elif (i == ')') :
+		if (len(s) != 0):
+			for j in s :
+				if (j == '(') :
+					s.remove(j)
+					benar = "True"
+					break
+				elif (j != '(') :
+					benar = "False"
+					break
+		elif (len(s) == 0) :
+			benar = "False"
+			break
+
+if (len(s) != 0) :
+	benar = "False"
+
+print(s)
+print(benar)
